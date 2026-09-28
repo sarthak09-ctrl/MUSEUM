@@ -5,28 +5,60 @@
 @tailwind utilities;
 
 * {
-    font-family: Outfit;
+  box-sizing: border-box;
+  font-family: Outfit, sans-serif;
+}
+
+html {
+  width: 100%;
+  overflow-x: hidden;
 }
 
 body {
-    background-color: #0f0f0f;
-    color: #ffffff;
+  width: 100%;
+  min-width: 320px;
+  margin: 0;
+  overflow-x: hidden;
+  background-color: #0f0f0f;
 }
 
-/* Active navigation */
-.active hr {
-    @apply block;
+#root {
+  width: 100%;
+  min-height: 100vh;
+  overflow-x: hidden;
 }
 
-/* Mobile active navigation */
-@media (max-width: 740px) {
-    .active p {
-        background-color: #b98255;
-        color: white;
-    }
+/* Prevent images from breaking mobile layout */
+img {
+  max-width: 100%;
+  height: auto;
 }
 
-/* Hide scrollbar */
-::-webkit-scrollbar {
-    display: none;
+/* Prevent videos from overflowing */
+video {
+  max-width: 100%;
+}
+
+/* Mobile-friendly buttons */
+button,
+a {
+  -webkit-tap-highlight-color: transparent;
+}
+
+/* iPhone-sized screens */
+@media (max-width: 430px) {
+
+  body {
+    font-size: 14px;
+  }
+
+  button {
+    max-width: 100%;
+  }
+
+  input,
+  textarea,
+  select {
+    max-width: 100%;
+  }
 }

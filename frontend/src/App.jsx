@@ -18,6 +18,7 @@ import InProcess from "./pages/inProcess";
 import Categories from "./pages/Categories";
 import Hinduism from "./pages/Hinduism";
 import LordKrishna from "./pages/LordKrishna";
+import Icon from "./components/Icon";
 
 const App = () => {
   return (
@@ -41,6 +42,7 @@ const App = () => {
         <Route path="/categories/hinduism" element={<Hinduism />} />
         <Route path="/trail/lord-krishna" element={<LordKrishna />} />
       </Routes>
+      <Icon />
       <Footer />
     </div>
   );

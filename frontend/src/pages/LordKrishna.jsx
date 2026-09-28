@@ -2,7 +2,6 @@ import React, { useState } from "react";
 import {
   ArrowLeft,
   ChevronDown,
-  ChevronRight,
   Play,
   Pause,
   SkipBack,
@@ -14,11 +13,12 @@ import {
   RotateCcw,
   Ticket,
   MapPin,
+  Volume2,
+  ChevronUp,
 } from "lucide-react";
 
 import { useNavigate } from "react-router-dom";
 
-// Replace these with your actual museum/Krishna images
 import krishnaHero from "../assets/header_img.png";
 import krishna1 from "../assets/header_img.png";
 import krishna2 from "../assets/header_img.png";
@@ -32,135 +32,143 @@ const LordKrishna = () => {
 
   const [playing, setPlaying] = useState(false);
   const [saved, setSaved] = useState(false);
+  const [playerOpen, setPlayerOpen] = useState(true);
 
   const paintings = [
     {
-      title: "Krishna with Radha",
+      title: "Krishna with flute",
       image: krishna1,
-      artist: "Unknown Artist",
+      artist: "Acc. No. 2471",
+    },
+    {
+      title: "Krishna with Radha",
+      image: krishna2,
+      artist: "Acc. No. 2471",
     },
     {
       title: "Krishna with Gopis",
-      image: krishna2,
-      artist: "Indian Miniature",
-    },
-    {
-      title: "Krishna Playing Flute",
       image: krishna3,
-      artist: "Pahari School",
+      artist: "Acc. No. 2471",
     },
     {
       title: "Krishna Leela",
       image: krishna4,
-      artist: "Rajasthani School",
+      artist: "Acc. No. 2471",
     },
     {
       title: "Govardhan Krishna",
       image: krishna5,
-      artist: "Mughal Period",
+      artist: "Acc. No. 2471",
     },
     {
       title: "Radha Krishna",
       image: krishna6,
-      artist: "Kangra School",
+      artist: "Acc. No. 2471",
     },
   ];
 
   return (
-    <div className="min-h-screen bg-[#f7f4ef] text-[#292522]">
+    <div className="min-h-screen bg-[#f5f1eb] text-[#292522] overflow-x-hidden">
 
       {/* =====================================================
-          TOP NAVIGATION
+          MOBILE HERO
       ====================================================== */}
-      <header className="fixed top-0 left-0 right-0 z-50 bg-[#171717]/95 backdrop-blur-md text-white">
 
-        <div className="max-w-7xl mx-auto px-4 md:px-8 h-14 flex items-center justify-between">
+      <section className="relative h-[100dvh] min-h-[680px] md:hidden">
 
-          <button
-            onClick={() => navigate(-1)}
-            className="flex items-center gap-2 text-sm hover:text-[#c58a5b] transition"
-          >
-            <ArrowLeft size={18} />
-            <span className="hidden sm:block">Back</span>
-          </button>
+        <img
+          src={krishnaHero}
+          alt="Krishna Leela"
+          className="absolute inset-0 w-full h-full object-cover"
+        />
 
-          <div className="text-sm font-medium tracking-wide">
-            Museum Trails
-          </div>
+        {/* Overlay */}
+        <div className="absolute inset-0 bg-gradient-to-b from-black/30 via-transparent to-black/80" />
 
-          <button
-            onClick={() => setSaved(!saved)}
-            className="p-2 rounded-full hover:bg-white/10 transition"
-          >
-            <Bookmark
-              size={19}
-              fill={saved ? "#c58a5b" : "none"}
-              className={saved ? "text-[#c58a5b]" : ""}
-            />
-          </button>
+        {/* TOP CONTROLS */}
+        <div
+          className="
+            absolute
+            top-0
+            left-0
+            right-0
+            z-20
+            pt-[calc(env(safe-area-inset-top)+10px)]
+            px-5
+          "
+        >
 
-        </div>
+          <div className="flex items-center justify-between">
 
-      </header>
+            <button
+              onClick={() => navigate(-1)}
+              className="
+                w-9 h-9
+                rounded-full
+                bg-black/25
+                backdrop-blur-md
+                border border-white/20
+                flex items-center justify-center
+                text-white
+              "
+            >
+              <ArrowLeft size={19} />
+            </button>
 
+            <div className="flex items-center gap-5 text-white">
 
-      {/* =====================================================
-          HERO SECTION
-      ====================================================== */}
-      <section className="relative pt-14">
+              <span className="text-[10px] font-medium">
+                2/7
+              </span>
 
-        <div className="relative h-[500px] md:h-[620px] overflow-hidden">
-
-          <img
-            src={krishnaHero}
-            alt="Krishna Leela"
-            className="absolute inset-0 w-full h-full object-cover"
-          />
-
-          {/* Dark cinematic overlay */}
-          <div className="absolute inset-0 bg-gradient-to-t from-[#151515] via-[#151515]/40 to-black/10" />
-
-          <div className="absolute inset-x-0 bottom-0">
-
-            <div className="max-w-7xl mx-auto px-5 md:px-10 pb-10 md:pb-14">
-
-              <div className="max-w-2xl text-white">
-
-                <p className="text-[10px] md:text-xs uppercase tracking-[0.25em] text-[#d8a16f] mb-3">
-                  Hinduism · Indian Art
-                </p>
-
-                <h1 className="text-3xl md:text-5xl font-serif font-medium mb-4">
-                  Krishna Leela
-                </h1>
-
-                <p className="text-sm md:text-base leading-7 text-white/80 max-w-xl">
-                  Radha and Krishna meet beneath a flowering tree.
-                  This trail explores the stories of Indian art's most
-                  enduring metaphors for devotion, longing between the
-                  human and divine, and the intimate worlds that
-                  bring these stories to life.
-                </p>
-
-                <div className="flex items-center gap-5 mt-6 text-xs text-white/70">
-
-                  <span>7 artworks</span>
-
-                  <span className="w-1 h-1 bg-white/50 rounded-full" />
-
-                  <span>30–75 min</span>
-
-                  <span className="w-1 h-1 bg-white/50 rounded-full" />
-
-                  <span>Easy</span>
-
-                </div>
-
-              </div>
+              <Volume2 size={15} />
 
             </div>
 
           </div>
+
+        </div>
+
+        {/* HERO CONTENT */}
+        <div
+          className="
+            absolute
+            left-0
+            right-0
+            bottom-0
+            z-10
+            px-5
+            pb-[145px]
+          "
+        >
+
+          <p className="text-[8px] uppercase tracking-[0.18em] text-white/70 mb-2">
+            Painting · c. 1820
+          </p>
+
+          <h1 className="font-serif text-[20px] leading-tight text-white mb-2">
+            Krishna Leela
+          </h1>
+
+          <p
+            className="
+              text-[11px]
+              leading-[1.55]
+              tracking-[0.03em]
+              text-white/80
+              max-w-[340px]
+            "
+          >
+            Radha and Krishna meet beneath a flowering tree.
+            Their relationship became one of Indian art's most
+            enduring metaphors for devotion: the longing between
+            the human and the divine. The intimate scale asks us
+            to look slowly and closely.
+          </p>
+
+          <p className="text-[8px] text-white/40 mt-3">
+            Gallery 3
+          </p>
 
         </div>
 
@@ -168,107 +176,48 @@ const LordKrishna = () => {
 
 
       {/* =====================================================
-          AUDIO PLAYER
+          DESKTOP HERO
       ====================================================== */}
-      <section className="relative z-20 -mt-8 px-4">
 
-        <div className="max-w-5xl mx-auto">
+      <section className="hidden md:block relative h-[620px]">
 
-          <div className="bg-[#202020] rounded-xl shadow-xl text-white overflow-hidden">
+        <img
+          src={krishnaHero}
+          alt="Krishna Leela"
+          className="absolute inset-0 w-full h-full object-cover"
+        />
 
-            {/* Player header */}
-            <div className="px-5 pt-4">
+        <div className="absolute inset-0 bg-gradient-to-t from-black via-black/30 to-transparent" />
 
-              <div className="flex items-center justify-between">
+        <div className="absolute top-8 left-8 z-20">
 
-                <div>
+          <button
+            onClick={() => navigate(-1)}
+            className="flex items-center gap-2 text-white"
+          >
+            <ArrowLeft size={20} />
+            Back
+          </button>
 
-                  <p className="text-[9px] uppercase tracking-[0.2em] text-[#bd8a61]">
-                    Krishna Leela
-                  </p>
+        </div>
 
-                  <h2 className="text-sm font-medium mt-1">
-                    Chapter 2 · Painting Title
-                  </h2>
+        <div className="absolute bottom-16 left-0 right-0 px-10">
 
-                </div>
+          <div className="max-w-7xl mx-auto text-white">
 
-                <div className="flex items-center gap-1 text-[10px] text-white/40">
-                  02 / 07
-                  <ChevronDown size={14} />
-                </div>
+            <p className="text-xs uppercase tracking-[0.25em] text-[#d8a16f] mb-3">
+              Hinduism · Indian Art
+            </p>
 
-              </div>
+            <h1 className="font-serif text-5xl mb-4">
+              Krishna Leela
+            </h1>
 
-            </div>
-
-
-            {/* Progress */}
-            <div className="px-5 mt-4">
-
-              <div className="h-[2px] bg-white/20 relative">
-
-                <div className="absolute left-0 top-0 h-full w-[35%] bg-[#c58a5b]" />
-
-              </div>
-
-            </div>
-
-
-            {/* Controls */}
-            <div className="flex justify-center items-center gap-7 py-4">
-
-              <button className="text-white/70 hover:text-white">
-                <SkipBack size={18} />
-              </button>
-
-              <button
-                onClick={() => setPlaying(!playing)}
-                className="w-11 h-11 rounded-full bg-[#c58a5b] flex items-center justify-center hover:bg-[#d49b6c] transition"
-              >
-                {playing ? (
-                  <Pause size={19} fill="currentColor" />
-                ) : (
-                  <Play size={19} fill="currentColor" />
-                )}
-              </button>
-
-              <button className="text-white/70 hover:text-white">
-                <SkipForward size={18} />
-              </button>
-
-            </div>
-
-
-            {/* Thumbnail strip */}
-            <div className="px-4 pb-4 overflow-x-auto">
-
-              <div className="flex gap-2 min-w-max">
-
-                {paintings.map((painting, index) => (
-
-                  <div
-                    key={index}
-                    className={`w-12 h-12 rounded-md overflow-hidden border-2 ${
-                      index === 1
-                        ? "border-[#c58a5b]"
-                        : "border-transparent"
-                    }`}
-                  >
-
-                    <img
-                      src={painting.image}
-                      alt={painting.title}
-                      className="w-full h-full object-cover"
-                    />
-
-                  </div>
-
-                ))}
-
-              </div>
-
-            </div>
+            <p className="max-w-xl text-sm leading-7 text-white/80">
+              Radha and Krishna meet beneath a flowering tree.
+              This trail explores the stories of Indian art's most
+              enduring metaphors for devotion.
+            </p>
 
           </div>
 
@@ -280,47 +229,59 @@ const LordKrishna = () => {
       {/* =====================================================
           MAIN CONTENT
       ====================================================== */}
-      <main className="max-w-6xl mx-auto px-5 md:px-10">
 
-        {/* =================================================
-            TRAIL OVERVIEW
-        ================================================== */}
-        <section className="py-12 border-b border-[#ddd6cd]">
+      <main className="pb-[180px]">
 
-          <div className="flex items-center justify-between mb-5">
+        {/* TRAIL OVERVIEW */}
 
-            <h2 className="text-xl md:text-2xl font-serif font-medium">
+        <section className="bg-white px-5 py-6 md:max-w-6xl md:mx-auto md:bg-transparent md:px-10">
+
+          <div className="border-l-[3px] border-[#b77d52] pl-2.5">
+
+            <h2 className="font-serif text-[17px] md:text-2xl">
               Trail Overview
             </h2>
 
-            <span className="text-xs text-[#8d8176]">
-              7 Works
-            </span>
-
           </div>
 
-          <p className="text-sm md:text-base leading-7 text-[#6c6259] max-w-3xl">
-            Follow Krishna through a selection of paintings that explore
-            devotion, divine play, love and mythology. The trail moves
-            through different artistic traditions while keeping the story
-            easy to understand for first-time visitors.
+          <p
+            className="
+              mt-4
+              text-[11px]
+              leading-[1.5]
+              tracking-[0.04em]
+              text-[#625b54]
+              max-w-3xl
+            "
+          >
+            Trail description will come here. Trail description will
+            come here. Trail description will come here. Trail
+            description will come here. Trail description will come
+            here.
           </p>
 
-
-          {/* Tags */}
-          <div className="flex flex-wrap gap-2 mt-6">
+          <div className="flex flex-wrap gap-2 mt-4">
 
             {[
-              "Category: Hinduism",
-              "Sub Category: Krishna",
-              "Theme: Devotion",
-              "Character: Krishna",
+              "Category Name",
+              "Sub Category Name",
+              "Theme",
+              "Character",
               "Other Key Words",
-            ].map((tag, index) => (
+            ].map((tag) => (
 
               <span
-                key={index}
-                className="px-3 py-1.5 rounded-full border border-[#d7cec4] bg-white text-[11px] text-[#71675f]"
+                key={tag}
+                className="
+                  px-3
+                  py-1.5
+                  rounded-full
+                  border
+                  border-[#dfd2c7]
+                  bg-[#faf8f5]
+                  text-[8px]
+                  text-[#8b7d72]
+                "
               >
                 {tag}
               </span>
@@ -332,50 +293,86 @@ const LordKrishna = () => {
         </section>
 
 
-        {/* =================================================
-            PAINTINGS INCLUDED
-        ================================================== */}
-        <section className="py-12">
+        {/* =====================================================
+            PAINTINGS
+        ====================================================== */}
 
-          <div className="flex items-center justify-between mb-6">
+        <section className="px-5 py-6 bg-[#f5f1eb] md:max-w-6xl md:mx-auto md:px-10">
 
-            <h2 className="text-xl md:text-2xl font-serif">
-              Paintings Included
-            </h2>
+          <div className="flex justify-between items-center mb-4">
 
-            <span className="text-xs text-[#8d8176]">
+            <div className="border-l-[3px] border-[#b77d52] pl-2.5">
+
+              <h2 className="font-serif text-[17px] md:text-2xl">
+                Paintings Included
+              </h2>
+
+            </div>
+
+            <span className="text-[9px] text-[#94887e]">
               7 Works
             </span>
 
           </div>
 
 
-          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
+          {/* MOBILE = HORIZONTAL SCROLL */}
+          <div
+            className="
+              flex
+              gap-4
+              overflow-x-auto
+              pb-2
+              scrollbar-hide
+              md:grid
+              md:grid-cols-3
+              lg:grid-cols-4
+              md:overflow-visible
+            "
+          >
 
             {paintings.map((painting, index) => (
 
               <div
                 key={index}
-                className="group bg-white rounded-lg overflow-hidden border border-[#e3ddd6] hover:shadow-lg transition"
+                className="
+                  min-w-[110px]
+                  w-[110px]
+                  md:min-w-0
+                  md:w-auto
+                  flex-shrink-0
+                  md:bg-white
+                  md:border
+                  md:border-[#e1dad2]
+                  md:rounded-lg
+                  overflow-hidden
+                "
               >
 
-                <div className="aspect-[4/5] overflow-hidden">
+                <div className="h-[142px] md:h-[280px] overflow-hidden rounded-md md:rounded-none">
 
                   <img
                     src={painting.image}
                     alt={painting.title}
-                    className="w-full h-full object-cover group-hover:scale-105 transition duration-500"
+                    className="
+                      w-full
+                      h-full
+                      object-cover
+                      transition
+                      duration-500
+                      md:hover:scale-105
+                    "
                   />
 
                 </div>
 
-                <div className="p-3">
+                <div className="pt-2 md:p-3">
 
-                  <h3 className="text-sm font-medium">
+                  <h3 className="text-[9px] md:text-sm font-medium truncate">
                     {painting.title}
                   </h3>
 
-                  <p className="text-[11px] text-[#92877d] mt-1">
+                  <p className="text-[7px] md:text-[11px] text-[#9b8f85] mt-1">
                     {painting.artist}
                   </p>
 
@@ -390,117 +387,105 @@ const LordKrishna = () => {
         </section>
 
 
-        {/* =================================================
-            WHY THIS TRAIL
-        ================================================== */}
-        <section className="border-t border-[#ddd6cd] py-12">
+        {/* =====================================================
+            GALLERY LOCATIONS
+        ====================================================== */}
 
-          <h2 className="text-xl md:text-2xl font-serif mb-5">
-            Why?
-          </h2>
+        <section className="bg-white border-t border-[#ded6ce] px-5 py-6">
 
-          <p className="text-sm md:text-base leading-7 text-[#6c6259] max-w-3xl">
-            Krishna's narrative occupies a unique place in Indian art
-            history. Artists across centuries created scenes of worship,
-            devotion, love and playful mythology. This trail brings
-            together selected paintings to show how the story of Krishna
-            has been interpreted across different artistic traditions.
-          </p>
+          <div className="border-l-[3px] border-[#b77d52] pl-2.5 mb-5">
+
+            <h2 className="font-serif text-[17px]">
+              Gallery Locations
+            </h2>
+
+          </div>
+
+          <div className="space-y-3">
+
+            {[
+              "Gallery 20 — South Asian Paintings",
+              "Gallery 28 — South Asian Paintings",
+              "Gallery 30 — South Asian Paintings",
+            ].map((location, index) => (
+
+              <div
+                key={index}
+                className="flex items-center gap-3"
+              >
+
+                <div className="w-6 h-6 rounded-full bg-[#f1ebe5] flex items-center justify-center text-[8px] text-[#9b7c65]">
+                  {index + 1}
+                </div>
+
+                <p className="text-[9px] text-[#716860]">
+                  {location}
+                </p>
+
+              </div>
+
+            ))}
+
+          </div>
 
         </section>
 
 
-        {/* =================================================
-            TRAIL DETAILS
-        ================================================== */}
-        <section className="border-t border-[#ddd6cd] py-12">
+        {/* =====================================================
+            ESTIMATED TIME
+        ====================================================== */}
 
-          <h2 className="text-xl md:text-2xl font-serif mb-6">
-            Trail Details
-          </h2>
+        <section className="px-5 py-6 bg-[#f5f1eb]">
 
+          <div className="border-l-[3px] border-[#b77d52] pl-2.5 mb-5">
 
-          <div className="grid grid-cols-3 gap-3">
-
-            {/* Time */}
-            <div className="bg-white border border-[#e1dad2] rounded-lg p-4">
-
-              <Clock3
-                size={18}
-                className="text-[#b37a50] mb-3"
-              />
-
-              <p className="text-[10px] uppercase tracking-wider text-[#958a80]">
-                Estimated Time
-              </p>
-
-              <p className="font-medium mt-1 text-sm">
-                30–75 min
-              </p>
-
-            </div>
-
-
-            {/* People */}
-            <div className="bg-white border border-[#e1dad2] rounded-lg p-4">
-
-              <Users
-                size={18}
-                className="text-[#b37a50] mb-3"
-              />
-
-              <p className="text-[10px] uppercase tracking-wider text-[#958a80]">
-                Group Size
-              </p>
-
-              <p className="font-medium mt-1 text-sm">
-                Any
-              </p>
-
-            </div>
-
-
-            {/* Works */}
-            <div className="bg-white border border-[#e1dad2] rounded-lg p-4">
-
-              <MapPin
-                size={18}
-                className="text-[#b37a50] mb-3"
-              />
-
-              <p className="text-[10px] uppercase tracking-wider text-[#958a80]">
-                Artworks
-              </p>
-
-              <p className="font-medium mt-1 text-sm">
-                7 Works
-              </p>
-
-            </div>
+            <h2 className="font-serif text-[17px]">
+              Estimated Time
+            </h2>
 
           </div>
 
+          <div className="grid grid-cols-3 gap-2">
 
-          {/* Difficulty */}
-          <div className="mt-5 bg-white border border-[#e1dad2] rounded-lg p-5">
+            <InfoBox
+              icon={<Clock3 size={15} />}
+              title="Time"
+              value="30–75 min"
+            />
 
-            <div className="flex justify-between items-center">
+            <InfoBox
+              icon={<Users size={15} />}
+              title="Group"
+              value="Any"
+            />
 
-              <span className="text-sm font-medium">
+            <InfoBox
+              icon={<MapPin size={15} />}
+              title="Works"
+              value="7 Works"
+            />
+
+          </div>
+
+          <div className="bg-white rounded-lg border border-[#dfd7cf] p-4 mt-3">
+
+            <div className="flex justify-between">
+
+              <span className="text-[10px] font-medium">
                 Difficulty
               </span>
 
-              <span className="text-xs text-[#8b8179]">
+              <span className="text-[9px] text-[#96897e]">
                 Easy
               </span>
 
             </div>
 
-            <div className="flex gap-2 mt-4">
+            <div className="flex gap-2 mt-3">
 
-              <div className="h-1 flex-1 rounded-full bg-[#b37a50]" />
-              <div className="h-1 flex-1 rounded-full bg-[#d8d0c8]" />
-              <div className="h-1 flex-1 rounded-full bg-[#d8d0c8]" />
+              <div className="h-[2px] flex-1 bg-[#b77d52]" />
+              <div className="h-[2px] flex-1 bg-[#ddd4cc]" />
+              <div className="h-[2px] flex-1 bg-[#ddd4cc]" />
 
             </div>
 
@@ -509,63 +494,68 @@ const LordKrishna = () => {
         </section>
 
 
-        {/* =================================================
+        {/* =====================================================
+            WHY
+        ====================================================== */}
+
+        <section className="bg-white px-5 py-7 border-t border-[#ded6ce]">
+
+          <div className="border-l-[3px] border-[#b77d52] pl-2.5 mb-4">
+
+            <h2 className="font-serif text-[17px]">
+              Why?
+            </h2>
+
+          </div>
+
+          <p className="text-[11px] leading-[1.6] text-[#716860]">
+            Krishna's narrative occupies a unique place in Indian
+            art history. Artists across centuries created scenes
+            of worship, devotion, love and playful mythology.
+          </p>
+
+        </section>
+
+
+        {/* =====================================================
             RATING
-        ================================================== */}
-        <section className="pb-12">
+        ====================================================== */}
 
-          <div className="bg-[#292929] text-white rounded-xl p-6">
+        <section className="bg-[#292929] text-white px-6 py-5">
 
-            <div className="flex justify-between items-center">
+          <div className="grid grid-cols-3 text-center">
 
-              <div>
+            <div>
+              <p className="font-serif text-xl">1.4k</p>
+              <p className="text-[8px] text-white/50">Saved</p>
+            </div>
 
-                <p className="text-2xl font-serif">
-                  1.4k
-                </p>
+            <div>
+              <div className="flex justify-center items-center gap-1">
 
-                <p className="text-xs text-white/50 mt-1">
-                  Saved
-                </p>
+                <Star
+                  size={13}
+                  fill="#c58a5b"
+                  className="text-[#c58a5b]"
+                />
 
-              </div>
-
-
-              <div className="text-center">
-
-                <div className="flex items-center justify-center gap-1">
-
-                  <Star
-                    size={16}
-                    fill="#c58a5b"
-                    className="text-[#c58a5b]"
-                  />
-
-                  <span className="text-xl font-medium">
-                    4.8
-                  </span>
-
-                </div>
-
-                <p className="text-xs text-white/50 mt-1">
-                  Rating
-                </p>
+                <span className="text-xl">
+                  4.8
+                </span>
 
               </div>
 
+              <p className="text-[8px] text-white/50">
+                Rating
+              </p>
 
-              <div className="text-right">
+            </div>
 
-                <p className="text-2xl font-serif">
-                  326
-                </p>
-
-                <p className="text-xs text-white/50 mt-1">
-                  Reviews
-                </p>
-
-              </div>
-
+            <div>
+              <p className="font-serif text-xl">326</p>
+              <p className="text-[8px] text-white/50">
+                Reviews
+              </p>
             </div>
 
           </div>
@@ -573,27 +563,48 @@ const LordKrishna = () => {
         </section>
 
 
-        {/* =================================================
-            ACTION BUTTONS
-        ================================================== */}
-        <section className="pb-16">
+        {/* =====================================================
+            BUTTONS
+        ====================================================== */}
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+        <section className="px-5 py-5 bg-white">
+
+          <div className="grid grid-cols-2 gap-2">
 
             <button
               onClick={() => navigate("/plan-visit")}
-              className="h-12 rounded-md bg-[#b77d52] text-white text-sm font-medium hover:bg-[#a86e45] transition flex items-center justify-center gap-2"
+              className="
+                h-11
+                rounded
+                bg-[#b77d52]
+                text-white
+                text-[11px]
+                flex
+                items-center
+                justify-center
+                gap-1.5
+              "
             >
-              <MapPin size={17} />
+              <MapPin size={14} />
               Plan Visit
             </button>
 
-
             <button
               onClick={() => navigate("/book-visit")}
-              className="h-12 rounded-md border border-[#b77d52] text-[#9d673f] text-sm font-medium hover:bg-[#b77d52] hover:text-white transition flex items-center justify-center gap-2"
+              className="
+                h-11
+                rounded
+                border
+                border-[#b77d52]
+                text-[#9d673f]
+                text-[11px]
+                flex
+                items-center
+                justify-center
+                gap-1.5
+              "
             >
-              <Ticket size={17} />
+              <Ticket size={14} />
               Book Tickets
             </button>
 
@@ -605,25 +616,223 @@ const LordKrishna = () => {
 
 
       {/* =====================================================
-          MOBILE PROGRESS / RESTART
+          FIXED AUDIO PLAYER
+          THIS IS THE BIGGEST DIFFERENCE FROM YOUR CURRENT CODE
       ====================================================== */}
-      <div className="fixed bottom-4 right-4 z-40">
 
-        <div className="bg-[#202020] text-white rounded-full shadow-xl px-3 py-2 flex items-center gap-2">
+      <div
+        className="
+          fixed
+          bottom-0
+          left-0
+          right-0
+          z-[100]
+          bg-[#191919]
+          text-white
+          rounded-t-[22px]
+          shadow-[0_-8px_30px_rgba(0,0,0,0.25)]
+          pb-[calc(env(safe-area-inset-bottom)+8px)]
+          md:left-1/2
+          md:-translate-x-1/2
+          md:max-w-5xl
+          md:rounded-xl
+          md:bottom-5
+        "
+      >
 
-          <span className="text-[10px] font-medium">
-            51 / 53
-          </span>
+        {/* COLLAPSE ARROW */}
 
-          <button className="text-white/60 hover:text-white">
+        <div className="flex justify-end px-5 pt-2">
 
-            <RotateCcw size={13} />
-
+          <button
+            onClick={() => setPlayerOpen(!playerOpen)}
+            className="text-[#c58a5b]"
+          >
+            {playerOpen ? (
+              <ChevronDown size={18} />
+            ) : (
+              <ChevronUp size={18} />
+            )}
           </button>
 
         </div>
 
+
+        {playerOpen && (
+
+          <>
+
+            {/* TRACK INFO */}
+
+            <div className="px-8">
+
+              <div className="flex justify-between items-end">
+
+                <div>
+
+                  <p className="text-[7px] uppercase tracking-[0.2em] text-[#b77d52]">
+                    Krishna Leela
+                  </p>
+
+                  <p className="text-[9px] mt-1">
+                    Chapter 2 · Painting Title
+                  </p>
+
+                </div>
+
+                <span className="text-[7px] text-white/50">
+                  8s / 20s
+                </span>
+
+              </div>
+
+
+              {/* PROGRESS */}
+
+              <div className="h-[2px] bg-white/25 mt-3">
+
+                <div className="h-full w-[38%] bg-[#b77d52]" />
+
+              </div>
+
+            </div>
+
+
+            {/* CONTROLS */}
+
+            <div className="flex items-center justify-center gap-9 py-3">
+
+              <button className="text-white/70">
+
+                <SkipBack size={15} />
+
+              </button>
+
+              <button
+                onClick={() => setPlaying(!playing)}
+                className="
+                  w-11
+                  h-11
+                  rounded-full
+                  bg-[#b77d52]
+                  flex
+                  items-center
+                  justify-center
+                "
+              >
+
+                {playing ? (
+                  <Pause size={18} fill="currentColor" />
+                ) : (
+                  <Play size={18} fill="currentColor" />
+                )}
+
+              </button>
+
+              <button className="text-white/70">
+
+                <SkipForward size={15} />
+
+              </button>
+
+            </div>
+
+
+            {/* THUMBNAILS */}
+
+            <div className="px-8 overflow-x-auto scrollbar-hide">
+
+              <div className="flex gap-2 min-w-max">
+
+                {paintings.map((painting, index) => (
+
+                  <div
+                    key={index}
+                    className={`
+                      w-[38px]
+                      h-[31px]
+                      rounded-sm
+                      overflow-hidden
+                      border
+                      ${
+                        index === 1
+                          ? "border-[#c58a5b]"
+                          : "border-white/30"
+                      }
+                    `}
+                  >
+
+                    <img
+                      src={painting.image}
+                      alt=""
+                      className="w-full h-full object-cover"
+                    />
+
+                  </div>
+
+                ))}
+
+              </div>
+
+            </div>
+
+          </>
+
+        )}
+
       </div>
+
+
+      {/* =====================================================
+          MOBILE PROGRESS
+      ====================================================== */}
+
+      <div
+        className="
+          fixed
+          right-3
+          bottom-[155px]
+          z-[110]
+          md:hidden
+        "
+      >
+
+        <div className="w-10 h-10 rounded-full bg-white/40 backdrop-blur-md border border-white/70 flex items-center justify-center">
+
+          <RotateCcw
+            size={13}
+            className="text-white"
+          />
+
+        </div>
+
+      </div>
+
+    </div>
+  );
+};
+
+
+/* =========================================================
+   INFO BOX
+========================================================= */
+
+const InfoBox = ({ icon, title, value }) => {
+
+  return (
+    <div className="bg-white border border-[#dfd7cf] rounded-lg p-3">
+
+      <div className="text-[#b77d52] mb-2">
+        {icon}
+      </div>
+
+      <p className="text-[7px] uppercase tracking-wider text-[#958a80]">
+        {title}
+      </p>
+
+      <p className="text-[9px] font-medium mt-1">
+        {value}
+      </p>
 
     </div>
   );

@@ -103,7 +103,8 @@ const CategoryCard = ({
         relative
         block
         w-full
-        h-[82px]
+        h-[76px]
+        xs:h-[82px]
         sm:h-[105px]
         md:h-[120px]
         overflow-hidden
@@ -154,7 +155,7 @@ const CategoryCard = ({
           flex
           items-center
           justify-between
-          px-4
+          px-3
           sm:px-6
         "
       >
@@ -167,7 +168,7 @@ const CategoryCard = ({
             className="
               font-serif
               text-white
-              text-[18px]
+              text-[14px]
               sm:text-[23px]
               md:text-[27px]
               leading-none
@@ -182,12 +183,12 @@ const CategoryCard = ({
           <p
             className="
               text-white/70
-              text-[7px]
+              text-[6.5px]
               sm:text-[9px]
               md:text-[10px]
               leading-tight
               truncate
-              max-w-[270px]
+              max-w-[245px]
               sm:max-w-[500px]
             "
           >
@@ -205,7 +206,7 @@ const CategoryCard = ({
             items-center
             justify-center
             flex-shrink-0
-            min-w-[35px]
+            min-w-[32px]
             sm:min-w-[50px]
           "
         >
@@ -213,7 +214,7 @@ const CategoryCard = ({
           <span
             className="
               text-[#d8b889]
-              text-[11px]
+              text-[9px]
               sm:text-[14px]
               font-medium
             "
@@ -224,7 +225,7 @@ const CategoryCard = ({
           <span
             className="
               text-white/60
-              text-[6px]
+              text-[5.5px]
               sm:text-[8px]
               uppercase
               tracking-wide
@@ -254,6 +255,8 @@ const Categories = () => {
     <div
       className="
         min-h-screen
+        w-full
+        overflow-x-hidden
         bg-[#292929]
         text-white
       "
@@ -268,13 +271,14 @@ const Categories = () => {
           sticky
           top-0
           z-50
-          h-[58px]
+          h-[48px]
+          sm:h-[58px]
           bg-[#292929]
           border-b
           border-white/5
           flex
           items-center
-          px-5
+          px-3
           sm:px-8
         "
       >
@@ -283,14 +287,14 @@ const Categories = () => {
         <button
           onClick={() => navigate(-1)}
           className="
-            mr-4
+            mr-3
             text-gray-300
             hover:text-white
             transition
           "
         >
           <ArrowLeft
-            size={18}
+            size={17}
             strokeWidth={1.5}
           />
         </button>
@@ -301,7 +305,7 @@ const Categories = () => {
           className="
             flex-1
             font-serif
-            text-[17px]
+            text-[15px]
             sm:text-[20px]
             font-semibold
           "
@@ -313,14 +317,14 @@ const Categories = () => {
         {/* SEARCH */}
         <button
           className="
-            mr-5
+            mr-4
             text-gray-400
             hover:text-white
             transition
           "
         >
           <Search
-            size={20}
+            size={18}
             strokeWidth={1.5}
           />
         </button>
@@ -335,7 +339,7 @@ const Categories = () => {
           "
         >
           <Menu
-            size={23}
+            size={21}
             strokeWidth={1.4}
           />
         </button>
@@ -349,9 +353,10 @@ const Categories = () => {
 
       <main
         className="
+          w-full
           max-w-[850px]
           mx-auto
-          px-5
+          px-3
           sm:px-8
           pb-16
         "
@@ -365,11 +370,13 @@ const Categories = () => {
         <div
           className="
             flex
-            gap-2
+            gap-1.5
             overflow-x-auto
             scrollbar-hide
-            pt-4
+            pt-3
             pb-2
+            -mx-1
+            px-1
           "
         >
 
@@ -379,11 +386,11 @@ const Categories = () => {
               key={filter}
               className={`
                 flex-shrink-0
-                px-3
-                py-[5px]
+                px-2.5
+                py-[4px]
                 rounded-full
                 border
-                text-[8px]
+                text-[7px]
                 sm:text-[10px]
                 transition
 
@@ -421,8 +428,8 @@ const Categories = () => {
             flex
             items-center
             justify-between
-            mt-3
-            mb-3
+            mt-2
+            mb-2
           "
         >
 
@@ -443,7 +450,7 @@ const Categories = () => {
             CATEGORY LIST
         ================================================== */}
 
-        <div className="space-y-3">
+        <div className="space-y-2 sm:space-y-3">
 
           {categories.map((category, index) => (
 
@@ -469,11 +476,11 @@ const Categories = () => {
 
       <footer
         className="
-          mt-5
+          mt-4
           bg-[#242424]
           border-t
           border-white/5
-          py-10
+          py-8 sm:py-10
           flex
           flex-col
           items-center

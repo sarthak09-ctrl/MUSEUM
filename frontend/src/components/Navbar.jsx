@@ -10,25 +10,63 @@ const Navbar = () => {
       {/* ================= NAVBAR ================= */}
       <div className="w-full bg-[#292929] text-white">
 
-        <div className="flex items-center justify-between px-6 md:px-12 lg:px-20 py-8">
+        <div
+          className="
+            flex items-center justify-between
+            px-4 py-3
+            sm:px-6 sm:py-4
+            md:px-12 md:py-6
+            lg:px-20 lg:py-8
+          "
+        >
 
           {/* LOGO */}
           <div
             onClick={() => navigate('/')}
             className="cursor-pointer"
           >
-            <p className="font-serif text-[#b58a5c] text-xl md:text-2xl tracking-[5px]">
+            <p
+              className="
+                font-serif
+                text-[#b58a5c]
+                text-[10px]
+                sm:text-sm
+                md:text-xl
+                tracking-[3px]
+                sm:tracking-[4px]
+                md:tracking-[5px]
+              "
+            >
               Salarjung
             </p>
 
-            <h1 className="font-serif font-bold text-4xl md:text-5xl lg:text-6xl leading-none tracking-wide">
+            <h1
+              className="
+                font-serif
+                font-bold
+                text-xl
+                sm:text-2xl
+                md:text-4xl
+                lg:text-6xl
+                leading-none
+                tracking-wide
+              "
+            >
               MUSEUM
             </h1>
           </div>
 
 
           {/* RIGHT ICONS */}
-          <div className="flex items-center gap-10">
+          <div
+            className="
+              flex items-center
+              gap-3
+              sm:gap-5
+              md:gap-8
+              lg:gap-10
+            "
+          >
 
             {/* SEARCH */}
             <button
@@ -36,7 +74,12 @@ const Navbar = () => {
               className="hover:opacity-70 transition"
             >
               <svg
-                className="w-12 h-12 md:w-16 md:h-16"
+                className="
+                  w-6 h-6
+                  sm:w-8 sm:h-8
+                  md:w-12 md:h-12
+                  lg:w-16 lg:h-16
+                "
                 viewBox="0 0 64 64"
                 fill="none"
               >
@@ -67,7 +110,12 @@ const Navbar = () => {
               className="hover:opacity-70 transition"
             >
               <svg
-                className="w-14 h-14 md:w-[70px] md:h-[70px]"
+                className="
+                  w-7 h-7
+                  sm:w-9 sm:h-9
+                  md:w-14 md:h-14
+                  lg:w-[70px] lg:h-[70px]
+                "
                 viewBox="0 0 70 70"
                 fill="none"
               >
@@ -108,36 +156,78 @@ const Navbar = () => {
 
       {/* ================= MENU ================= */}
       <div
-        className={`fixed inset-0 z-50 bg-[#292929] text-white transition-all duration-300 ${
-          showMenu
+        className={`
+          fixed inset-0 z-50
+          bg-[#292929]
+          text-white
+          transition-all duration-300
+          ${showMenu
             ? 'opacity-100 visible'
             : 'opacity-0 invisible'
-        }`}
+          }
+        `}
       >
 
         {/* MENU HEADER */}
-        <div className="flex items-center justify-between px-6 md:px-12 lg:px-20 py-8">
+        <div
+          className="
+            flex items-center justify-between
+            px-4 py-3
+            sm:px-6 sm:py-4
+            md:px-12 md:py-6
+            lg:px-20 lg:py-8
+          "
+        >
 
-          <div onClick={() => {
-            navigate('/')
-            setShowMenu(false)
-          }}
+          {/* LOGO */}
+          <div
+            onClick={() => {
+              navigate('/')
+              setShowMenu(false)
+            }}
             className="cursor-pointer"
           >
-            <p className="font-serif text-[#b58a5c] text-xl tracking-[5px]">
+            <p
+              className="
+                font-serif
+                text-[#b58a5c]
+                text-[10px]
+                sm:text-sm
+                md:text-xl
+                tracking-[3px]
+                sm:tracking-[4px]
+                md:tracking-[5px]
+              "
+            >
               Salarjung
             </p>
 
-            <h1 className="font-serif font-bold text-4xl md:text-5xl leading-none">
+            <h1
+              className="
+                font-serif
+                font-bold
+                text-xl
+                sm:text-2xl
+                md:text-5xl
+                leading-none
+              "
+            >
               MUSEUM
             </h1>
           </div>
 
 
           {/* CLOSE */}
-          <button onClick={() => setShowMenu(false)}>
+          <button
+            onClick={() => setShowMenu(false)}
+            className="hover:opacity-70 transition"
+          >
             <svg
-              className="w-12 h-12"
+              className="
+                w-8 h-8
+                sm:w-10 sm:h-10
+                md:w-12 md:h-12
+              "
               viewBox="0 0 50 50"
               fill="none"
             >
@@ -165,15 +255,35 @@ const Navbar = () => {
 
 
         {/* LINKS */}
-        <div className="flex justify-center items-center h-[70vh]">
+        <div
+          className="
+            flex justify-center items-center
+            h-[75vh]
+            sm:h-[70vh]
+          "
+        >
 
-          <ul className="text-center space-y-8">
+          <ul
+            className="
+              text-center
+              space-y-6
+              sm:space-y-8
+              md:space-y-10
+            "
+          >
 
             <li>
               <NavLink
                 to="/"
                 onClick={() => setShowMenu(false)}
-                className="text-3xl md:text-5xl font-serif hover:text-[#b58a5c]"
+                className="
+                  text-2xl
+                  sm:text-3xl
+                  md:text-5xl
+                  font-serif
+                  hover:text-[#b58a5c]
+                  transition-colors
+                "
               >
                 HOME
               </NavLink>
@@ -183,7 +293,14 @@ const Navbar = () => {
               <NavLink
                 to="/collection"
                 onClick={() => setShowMenu(false)}
-                className="text-3xl md:text-5xl font-serif hover:text-[#b58a5c]"
+                className="
+                  text-2xl
+                  sm:text-3xl
+                  md:text-5xl
+                  font-serif
+                  hover:text-[#b58a5c]
+                  transition-colors
+                "
               >
                 COLLECTION
               </NavLink>
@@ -193,7 +310,14 @@ const Navbar = () => {
               <NavLink
                 to="/about"
                 onClick={() => setShowMenu(false)}
-                className="text-3xl md:text-5xl font-serif hover:text-[#b58a5c]"
+                className="
+                  text-2xl
+                  sm:text-3xl
+                  md:text-5xl
+                  font-serif
+                  hover:text-[#b58a5c]
+                  transition-colors
+                "
               >
                 ABOUT
               </NavLink>
@@ -203,7 +327,14 @@ const Navbar = () => {
               <NavLink
                 to="/contact"
                 onClick={() => setShowMenu(false)}
-                className="text-3xl md:text-5xl font-serif hover:text-[#b58a5c]"
+                className="
+                  text-2xl
+                  sm:text-3xl
+                  md:text-5xl
+                  font-serif
+                  hover:text-[#b58a5c]
+                  transition-colors
+                "
               >
                 CONTACT
               </NavLink>

@@ -7,7 +7,13 @@ const SpecialityMenu = () => {
     return (
         <section
             id="speciality"
-            className="w-full bg-white py-10 md:py-14"
+            className="
+                w-full
+                bg-white
+                py-6
+                sm:py-8
+                md:py-14
+            "
         >
 
             {/* ================= HEADER ================= */}
@@ -16,20 +22,26 @@ const SpecialityMenu = () => {
                     flex
                     items-center
                     justify-between
-                    px-5
+                    px-4
+                    sm:px-5
                     md:px-10
-                    mb-7
+                    mb-4
+                    sm:mb-5
+                    md:mb-7
                 "
             >
 
                 {/* LEFT: TITLE */}
-                <div className="flex items-center gap-3">
+                <div className="flex items-center gap-2 sm:gap-3">
 
                     {/* Gold vertical line */}
                     <div
                         className="
-                            w-[6px]
-                            h-10
+                            w-[3px]
+                            sm:w-[5px]
+                            md:w-[6px]
+                            h-7
+                            sm:h-9
                             md:h-12
                             bg-[#B58A5A]
                             rounded-sm
@@ -39,7 +51,8 @@ const SpecialityMenu = () => {
                     <h2
                         className="
                             font-serif
-                            text-3xl
+                            text-xl
+                            sm:text-2xl
                             md:text-4xl
                             font-semibold
                             text-[#292929]
@@ -59,9 +72,11 @@ const SpecialityMenu = () => {
                     className="
                         flex
                         items-center
-                        gap-2
+                        gap-1
+                        sm:gap-2
                         text-[#B58A5A]
-                        text-sm
+                        text-[10px]
+                        sm:text-xs
                         md:text-base
                         font-medium
                         whitespace-nowrap
@@ -73,7 +88,8 @@ const SpecialityMenu = () => {
 
                     <span
                         className="
-                            text-xl
+                            text-sm
+                            sm:text-lg
                             md:text-2xl
                             leading-none
                         "
@@ -89,14 +105,19 @@ const SpecialityMenu = () => {
             <div
                 className="
                     flex
-                    gap-7
+                    gap-2.5
+                    sm:gap-4
+                    md:gap-7
                     overflow-x-auto
-                    px-5
+                    px-4
+                    sm:px-5
                     md:px-10
-                    pb-3
+                    pb-2
+                    sm:pb-3
                     scrollbar-hide
                     snap-x
                     snap-mandatory
+                    overscroll-x-contain
                 "
             >
 
@@ -108,7 +129,8 @@ const SpecialityMenu = () => {
                         onClick={() => window.scrollTo(0, 0)}
                         className="
                             flex-shrink-0
-                            w-[295px]
+                            w-[145px]
+                            sm:w-[175px]
                             md:w-[320px]
                             snap-start
                             group
@@ -122,7 +144,8 @@ const SpecialityMenu = () => {
                                 w-full
                                 aspect-[4/5]
                                 overflow-hidden
-                                rounded-xl
+                                rounded-lg
+                                sm:rounded-xl
                                 bg-gray-100
                                 border
                                 border-[#e8e0d6]
@@ -146,10 +169,14 @@ const SpecialityMenu = () => {
                         {/* ================= CATEGORY ================= */}
                         <p
                             className="
-                                mt-4
-                                text-xs
+                                mt-2
+                                sm:mt-3
+                                md:mt-4
+                                text-[8px]
+                                sm:text-[10px]
                                 md:text-sm
-                                tracking-[0.16em]
+                                tracking-[0.12em]
+                                sm:tracking-[0.16em]
                                 text-[#B58A5A]
                                 font-medium
                             "
@@ -161,9 +188,12 @@ const SpecialityMenu = () => {
                         {/* ================= TITLE ================= */}
                         <h3
                             className="
-                                mt-2
+                                mt-1
+                                sm:mt-1.5
+                                md:mt-2
                                 font-serif
-                                text-[22px]
+                                text-[13px]
+                                sm:text-base
                                 md:text-2xl
                                 leading-[1.15]
                                 font-semibold

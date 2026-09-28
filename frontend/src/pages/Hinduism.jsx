@@ -1,4 +1,4 @@
-    import React from "react";
+import React from "react";
 import {
   ArrowLeft,
   Search,
@@ -84,7 +84,7 @@ const TrailCard = ({
       className="
         relative
         w-full
-        h-[125px]
+        h-[112px]
         sm:h-[160px]
         md:h-[180px]
         overflow-hidden
@@ -135,7 +135,7 @@ const TrailCard = ({
           flex
           flex-col
           justify-end
-          p-4
+          p-3
           sm:p-5
         "
       >
@@ -146,12 +146,12 @@ const TrailCard = ({
           className="
             font-serif
             text-white
-            text-[18px]
+            text-[15px]
             sm:text-[23px]
             md:text-[26px]
             font-medium
             leading-tight
-            pr-32
+            pr-24 sm:pr-32
           "
         >
           {title}
@@ -164,10 +164,10 @@ const TrailCard = ({
           className="
             flex
             items-center
-            gap-3
-            mt-2
+            gap-2
+            mt-1
             text-white/70
-            text-[8px]
+            text-[7px]
             sm:text-[10px]
           "
         >
@@ -199,20 +199,21 @@ const TrailCard = ({
         className="
           absolute
           z-20
-          right-3
+          right-2
           sm:right-5
-          bottom-4
+          bottom-2
           sm:bottom-5
           flex
           items-center
-          gap-2
-          px-3
+          gap-1.5
+          px-2.5
           sm:px-4
-          py-2
+          py-1.5
+          sm:py-2
           rounded-[3px]
           bg-[#b48a5a]
           text-white
-          text-[8px]
+          text-[7px]
           sm:text-[10px]
           font-medium
           hover:bg-[#c69a69]
@@ -240,6 +241,8 @@ const Hinduism = () => {
     <div
       className="
         min-h-screen
+        w-full
+        overflow-x-hidden
         bg-[#292929]
         text-white
       "
@@ -254,13 +257,14 @@ const Hinduism = () => {
           sticky
           top-0
           z-50
-          h-[58px]
+          h-[48px]
+          sm:h-[58px]
           bg-[#292929]
           border-b
           border-white/5
           flex
           items-center
-          px-5
+          px-3
           sm:px-8
         "
       >
@@ -270,14 +274,14 @@ const Hinduism = () => {
         <button
           onClick={() => navigate(-1)}
           className="
-            mr-4
+            mr-3
             text-gray-400
             hover:text-white
             transition
           "
         >
           <ArrowLeft
-            size={18}
+            size={17}
             strokeWidth={1.5}
           />
         </button>
@@ -289,7 +293,7 @@ const Hinduism = () => {
           className="
             flex-1
             font-serif
-            text-[17px]
+            text-[15px]
             sm:text-[20px]
             font-semibold
           "
@@ -302,13 +306,13 @@ const Hinduism = () => {
 
         <button
           className="
-            mr-5
+            mr-4
             text-gray-400
             hover:text-white
           "
         >
           <Search
-            size={20}
+            size={18}
             strokeWidth={1.5}
           />
         </button>
@@ -323,7 +327,7 @@ const Hinduism = () => {
           "
         >
           <Menu
-            size={23}
+            size={21}
             strokeWidth={1.4}
           />
         </button>
@@ -337,11 +341,13 @@ const Hinduism = () => {
 
       <main
         className="
+          w-full
           max-w-[850px]
           mx-auto
-          px-5
+          px-3
           sm:px-8
-          pb-16
+          pb-12
+          sm:pb-16
         "
       >
 
@@ -349,13 +355,13 @@ const Hinduism = () => {
             FEATURED TRAIL
         ================================================== */}
 
-        <section className="pt-5">
+        <section className="pt-3 sm:pt-5">
 
           <div
             className="
               relative
               w-full
-              h-[190px]
+              h-[160px]
               sm:h-[260px]
               md:h-[320px]
               overflow-hidden
@@ -401,11 +407,11 @@ const Hinduism = () => {
             <div
               className="
                 absolute
-                bottom-4
+                bottom-3
                 sm:bottom-6
-                left-4
+                left-3
                 sm:left-6
-                right-4
+                right-3
                 z-10
               "
             >
@@ -432,7 +438,7 @@ const Hinduism = () => {
                 className="
                   font-serif
                   text-white
-                  text-[20px]
+                  text-[17px]
                   sm:text-[28px]
                   md:text-[34px]
                   font-semibold
@@ -458,8 +464,8 @@ const Hinduism = () => {
             flex
             items-center
             justify-between
-            mt-7
-            mb-4
+            mt-5
+            mb-3
           "
         >
 
@@ -468,7 +474,7 @@ const Hinduism = () => {
             <div
               className="
                 w-[3px]
-                h-[18px]
+                h-[16px]
                 bg-[#b48a5a]
                 mr-2
               "
@@ -477,7 +483,7 @@ const Hinduism = () => {
             <h2
               className="
                 font-serif
-                text-[16px]
+                text-[15px]
                 sm:text-[20px]
                 font-semibold
               "
@@ -505,7 +511,7 @@ const Hinduism = () => {
             TRAIL LIST
         ================================================== */}
 
-        <div className="space-y-3">
+        <div className="space-y-2.5 sm:space-y-3">
 
           {hinduismTrails.map((trail, index) => (
 
@@ -529,30 +535,11 @@ const Hinduism = () => {
         <div
           className="
             text-center
-            pt-10
-            pb-5
+            pt-8
+            pb-4
           "
         >
 
-          <p
-            className="
-              font-serif
-              text-[#b48a5a]
-              text-lg
-            "
-          >
-            Hinduism
-          </p>
-
-          <p
-            className="
-              text-gray-600
-              text-[8px]
-              mt-1
-            "
-          >
-            Explore stories through art and heritage
-          </p>
 
         </div>
 
